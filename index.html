@@ -20,17 +20,33 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 	<style type="text/css">
-/*
+
 		.full-height {
 			height: 100%;
-			color: white;
-		}*/
+			color: yellow;
+		}
+		html,body,.container
+		{
+		    height:100%;
+		}
+		.container
+		{
+		    width: 100%;
+		}
+		.row
+		{
+		    height: 100%;
+		}
+
 		@media(max-width:767px){
 			#map {
 		    	height: 75%;
 			}
 			#info {
 				height: 25%;
+			}
+			#list {
+				display: none;
 			}
 		}
 		@media(min-width:768px) and (max-width:991px){
@@ -39,6 +55,9 @@
 			}
 			#info {
 				height: 25%;
+			}
+			#list {
+				display: none;
 			}
 		}
 		@media(min-width:992px) and (max-width:1199px){
@@ -59,9 +78,9 @@
 
 	<div class="container">
 		<div class="row full-height">
-			<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 full-height" id="list" style="background-color: blue">sdfgsdfgsdf</div>
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 full-height" id="info" style="background-color: green">sdfgsdfgsdf</div>
-			<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6 full-height" id="map" style="background-color: red">sdfgsdfgsdf</div>
+			<div class="col-xs-hidden col-sm-hidden  col-md-2 col-lg-2 full-height" id="list" style="background-color: blue">list</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 full-height" id="info" style="background-color: green">info</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 full-height" id="map" style="background-color: red">map</div>
 		</div>
 	</div>
 
