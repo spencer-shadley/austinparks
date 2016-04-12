@@ -31,10 +31,10 @@ var PoolApp = function() {
     self.terminator = function(sig){
         if (typeof sig === "string") {
            console.log('%s: Received %s - terminating sample app ...',
-                       Date(Date.now()), sig);
+                       new Date(Date.now()), sig);
            process.exit(1);
         }
-        console.log('%s: Node server stopped.', Date(Date.now()) );
+        console.log('%s: Node server stopped.', new Date(Date.now()) );
     };
     self.setupTerminationHandlers = function(){
         //  Process on exit and signals.
@@ -43,7 +43,7 @@ var PoolApp = function() {
         // Removed 'SIGPIPE' from the list - bugz 852598.
         ['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT',
          'SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM'
-        ].forEach(function(element, index, array) {
+        ].forEach(function(element) {
             process.on(element, function() { self.terminator(element); });
         });
     };
@@ -70,6 +70,7 @@ var PoolApp = function() {
 
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
+            //noinspection JSUnfilteredForInLoop
             self.app.get(r, self.routes[r]);
         }
     };
@@ -84,7 +85,7 @@ var PoolApp = function() {
     self.start = function() {
         self.app.listen(self.port, self.ipaddress, function() {
             console.log('%s: Node server started on %s:%d ...',
-                        Date(Date.now() ), self.ipaddress, self.port);
+                        new Date(Date.now() ), self.ipaddress, self.port);
         });
     };
 };
