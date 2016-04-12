@@ -103,16 +103,14 @@ var poolApp = new PoolApp();
 poolApp.initialize();
 poolApp.start();
 
-poolApp.app.get('/test', function(req, res) {
+poolApp.app.get('/poolnames', function(req, res) {
     request(poolDataUrl, function(err, pools, body) {
         if(err)                         console.err(err);
         else if(pools.statusCode != 200)  console.err(pools.statusCode + ' in pool request');
         else {
             var poolNames = [];
             JSON.parse(body).forEach(function(pool) {
-                console.log(pool.pool_name);
                 poolNames.push(pool.pool_name);
-                console.log(poolNames);
             });
             res.send(poolNames);
         }
