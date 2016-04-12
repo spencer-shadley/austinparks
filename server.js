@@ -1,6 +1,7 @@
 #!/bin/env node
 var express = require('express');
 var fs      = require('fs');
+var request = require('request');
 
 var PoolApp = function() {
 
@@ -89,6 +90,17 @@ var PoolApp = function() {
         });
     };
 };
+
+/** JSON stuff **/
+var poolDataUrl = "https://data.austintexas.gov/resource/jfqh-bqzu.json";
+
+request(poolDataUrl, function(err, res, body) {
+    if(err) console.err(err);
+    else if(res.statusCode != 200) console.err('uh oh status of ' + res.statusCode + ' in pool request');
+    else {
+        console.log(body);
+    }
+});
 
 var poolApp = new PoolApp();
 poolApp.initialize();
