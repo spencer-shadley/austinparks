@@ -99,6 +99,9 @@ request(poolDataUrl, function(err, res, body) {
     else if(res.statusCode != 200) console.err('uh oh status of ' + res.statusCode + ' in pool request');
     else {
         console.log(body);
+        JSON.parse(body).forEach(function(pool) {
+            console.log(pool.pool_name);
+        });
     }
 });
 
