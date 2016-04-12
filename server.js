@@ -93,18 +93,28 @@ var PoolApp = function() {
 
 /** JSON stuff **/
 var poolDataUrl = "https://data.austintexas.gov/resource/jfqh-bqzu.json";
+function getPoolData() {
 
-request(poolDataUrl, function(err, res, body) {
-    if(err) console.err(err);
-    else if(res.statusCode != 200) console.err('uh oh status of ' + res.statusCode + ' in pool request');
-    else {
-        console.log(body);
-        JSON.parse(body).forEach(function(pool) {
-            console.log(pool.pool_name);
-        });
-    }
-});
+}
+
+
 
 var poolApp = new PoolApp();
 poolApp.initialize();
 poolApp.start();
+
+poolApp.app.get('/test', function(req, res) {
+    request(poolDataUrl, function(err, pools, body) {
+        if(err)                         console.err(err);
+        else if(pools.statusCode != 200)  console.err(pools.statusCode + ' in pool request');
+        else {
+            var poolNames = [];
+            JSON.parse(body).forEach(function(pool) {
+                console.log(pool.pool_name);
+                poolNames.push(pool.pool_name);
+                console.log(poolNames);
+            });
+            res.send(poolNames);
+        }
+    });
+});
