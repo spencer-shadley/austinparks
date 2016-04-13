@@ -3,6 +3,7 @@ var express = require('express');
 var fs      = require('fs');
 var request = require('request');
 
+var poolData;
 var PoolApp = function() {
 
     var self = this;
@@ -80,6 +81,15 @@ var PoolApp = function() {
         self.populateCache();
         self.setupTerminationHandlers();
         self.initializeServer();
+
+        // parse JSON
+        request(poolDataUrl, function(err, pools, body) {
+            if(err)                          console.err(err);
+            else if(pools.statusCode != 200) console.err(pools.statusCode + ' in pool request');
+            else {
+                poolData = JSON.parse(body);
+            }
+        });
     };
 
     /** Start the server **/
@@ -93,24 +103,15 @@ var PoolApp = function() {
 
 /** JSON stuff **/
 var poolDataUrl = "https://data.austintexas.gov/resource/jfqh-bqzu.json";
-function getPoolData() {
-
-}
 
 var poolApp = new PoolApp();
 poolApp.initialize();
 poolApp.start();
 
 poolApp.app.get('/poolnames', function(req, res) {
-    request(poolDataUrl, function(err, pools, body) {
-        if(err)                          console.err(err);
-        else if(pools.statusCode != 200) console.err(pools.statusCode + ' in pool request');
-        else {
-            var poolNames = [];
-            JSON.parse(body).forEach(function(pool) {
-                poolNames.push(pool.pool_name);
-            });
-            res.send(poolNames);
-        }
+    var poolNames = [];
+    poolData.forEach(function(pool) {
+        poolNames.push(pool.pool_name);
     });
+    res.send(poolNames);
 });

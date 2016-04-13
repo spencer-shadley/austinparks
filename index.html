@@ -31,7 +31,9 @@
                 res.data.forEach(function(pool) {
                     $('#poolNameList').append(
                             $('<li>').append(
+                            	// $('<button id="'+pool+'" onclick="alert('this.id')">').append(
                                     pool
+                                    // )
                             )
                     );
                 });
@@ -56,6 +58,12 @@
 		.row
 		{
 		    height: 100%;
+		}
+
+		ul
+		{
+    		list-style-type: none;
+    		padding-left: 0px;
 		}
 
 		@media(max-width:767px){
