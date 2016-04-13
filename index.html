@@ -28,14 +28,17 @@
                 method : "GET",
                 url : "poolnames"
             }).then(function(res) {
+            	var index = 0;
                 res.data.forEach(function(pool) {
                     $('#poolNameList').append(
-                            $('<li>').append(
-                            	// $('<button id="'+pool+'" onclick="alert('this.id')">').append(
+                            // $('<li id="' + pool + '">').append( // will identify each pool by pool name
+                            $('<li id="' + index + '">').append( // will identify each pool by index number
+                            	$('<button class="btn btn-link">').append( // onclick="alert(' + $(this).closest('li').id + ')"
                                     pool
-                                    // )
+                                    )
                             )
                     );
+                    index++;
                 });
             });
         });
@@ -47,23 +50,26 @@
 			height: 100%;
 			color: yellow;
 		}
-		html,body,.container
-		{
+		html,body,.container {
 		    height:100%;
 		}
-		.container
-		{
+		.container {
 		    width: 100%;
 		}
-		.row
-		{
+		.row {
 		    height: 100%;
 		}
 
-		ul
-		{
+		#list {
+			overflow: scroll;
+		}
+
+		ul#poolNameList {
     		list-style-type: none;
     		padding-left: 0px;
+		}
+		#poolNameList .btn-link {
+			color: white;
 		}
 
 		@media(max-width:767px){
