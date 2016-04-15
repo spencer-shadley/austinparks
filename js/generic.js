@@ -41,8 +41,8 @@ app.controller('ctrl', function($scope, $http) {
                 closed_div.classList.remove("hidden");
                 open_div.classList.add("hidden");
                 // Need to reformat date to a readable string
-                // var d = Date.parse(currentPoolJson.open_date)
-                // currentPoolJson.open_date = "CLOSED until " + d.getMonth() + " " + d.getDay();
+                var d = new Date(currentPoolJson.open_date).toDateString();
+                currentPoolJson.open_date = d;
             } else {
                 open_div.classList.remove("hidden");
                 closed_div.classList.add("hidden");
