@@ -1,0 +1,58 @@
+.full-height {
+	height: 100%;
+	color: yellow;
+}
+html,body,.container {
+	height:100%;
+}
+.container {
+	width: 100%;
+}
+.row {
+	height: 100%;
+}
+
+#list {
+	overflow: scroll;
+}
+
+ul#poolNameList {
+	list-style-type: none;
+	padding-left: 0px;
+}
+#poolNameList .btn-link {
+	color: white;
+}
+
+@media(max-width:767px){
+	#map {
+		height: 75%;
+	}
+	#info {
+		height: 25%;
+	}
+	#list {
+		display: none;
+	}
+}
+@media(min-width:768px) and (max-width:991px){
+	#map {
+		height: 75%;
+	}
+	#info {
+		height: 25%;
+	}
+	#list {
+		display: none;
+	}
+}
+@media(min-width:992px) and (max-width:1199px){
+	#map, #info, #list {
+		height: 100%;
+	}
+}
+@media(min-width:1200px){
+	#map, #info, #list {
+		height: 100%;
+	}
+}

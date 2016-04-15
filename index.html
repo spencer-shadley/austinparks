@@ -21,90 +21,9 @@
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
 
     <!-- Custom Scripts -->
-	<script src = "generic.js"></script>
-    <script>
-        var app = angular.module('app', []);
-        app.controller('ctrl', function($scope, $http) {
-            $http({
-                method : "GET",
-                url : "poolnames"
-            }).then(function(res) {
-                res.data.forEach(function(pool) {
-                    $('#poolNameList').append(
-                            $('<li id="' + pool + '">').append(
-                            	$('<button class="btn btn-link">').append(
-                                    pool
-                                    ).click(function() {
-                                    console.log(pool);
-                                })
-                            )
-                    );
-                });
-            });
-        });
-    </script>
+	<script src = "js/generic.js"></script>
 
-	<style type="text/css">
-
-		.full-height {
-			height: 100%;
-			color: yellow;
-		}
-		html,body,.container {
-		    height:100%;
-		}
-		.container {
-		    width: 100%;
-		}
-		.row {
-		    height: 100%;
-		}
-
-		#list {
-			overflow: scroll;
-		}
-
-		ul#poolNameList {
-    		list-style-type: none;
-    		padding-left: 0px;
-		}
-		#poolNameList .btn-link {
-			color: white;
-		}
-
-		@media(max-width:767px){
-			#map {
-		    	height: 75%;
-			}
-			#info {
-				height: 25%;
-			}
-			#list {
-				display: none;
-			}
-		}
-		@media(min-width:768px) and (max-width:991px){
-			#map {
-		    	height: 75%;
-			}
-			#info {
-				height: 25%;
-			}
-			#list {
-				display: none;
-			}
-		}
-		@media(min-width:992px) and (max-width:1199px){
-			#map, #info, #list {
-		    	height: 100%;
-			}
-		}
-		@media(min-width:1200px){
-			#map, #info, #list {
-		    	height: 100%;
-			}
-		}
-	</style>
+	<style rel="stylesheet" href="css/style.css"></style>
 
 </head>
 
