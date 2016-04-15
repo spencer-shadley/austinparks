@@ -35,8 +35,17 @@ app.controller('ctrl', function($scope, $http) {
             currentPoolJson = res.data;
             $scope.poolJson = res.data;
             console.log(currentPoolJson);
-            if (poolJson.status === "Closed") {
-                
+            var open_div = document.getElementById("status_open");
+            var closed_div = document.getElementById("status_closed");
+            if (currentPoolJson.status === "Closed") {
+                closed_div.classList.remove("hidden");
+                open_div.classList.add("hidden");
+                // Need to reformat date to a readable string
+                // var d = Date.parse(currentPoolJson.open_date)
+                // currentPoolJson.open_date = "CLOSED until " + d.getMonth() + " " + d.getDay();
+            } else {
+                open_div.classList.remove("hidden");
+                closed_div.classList.add("hidden");
             }
         });
     }

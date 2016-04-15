@@ -44,19 +44,18 @@
 
 				<!-- Pool Name -->
 				<h1> {{poolJson.pool_name}} </h1>
-				<h4> Facility Type: {{poolJson.pool_type}} </h4>
+				<p> Facility Type: {{poolJson.pool_type}} </p>
 
 				<!-- Pool Address -->
-				<h2> {{poolJson.location_1.human_address.address}} </h2>
-				<h2> {{poolJson.location_1.human_address.city}} {{poolJson.location_1.human_address.state}} </h2>
+				<h3> {{poolJson.location_1.human_address.address}} {{poolJson.location_1.human_address.city}}, {{poolJson.location_1.human_address.state}} </h3>
 
 				<!-- Phone -->
-				<p> {{poolJson.phone}} </p>
+				<h4> {{poolJson.phone}} </h4>
 				
 				<!-- status == closed -->
-				<div id="status_closed">
+				<div display="inline" id="status_closed">
 					<h3> CLOSED </h3>
-					<h3> {{poolJson.open_date}} </h3>
+					<h5> {{poolJson.open_date}} </h5>
 				</div>
 				<!-- status == open -->
 				<!-- Hours Open -->
