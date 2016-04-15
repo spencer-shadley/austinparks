@@ -9,7 +9,6 @@ html,body,.container {
 	width: 100%;
 }
 .picPrev {
-	display: inline-block;
 	height: 200px;
 	width: 300px;
 	background-color: darkcyan;
