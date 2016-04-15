@@ -52,17 +52,20 @@
 				<!-- Phone -->
 				<h4> {{poolJson.phone}} </h4>
 				
-				<!-- status == closed -->
-				<div display="inline" id="status_closed">
-					<h3> CLOSED </h3>
-					<h5> Will reopen on {{poolJson.open_date}} </h5>
-				</div>
-				<!-- status == open -->
-				<!-- Hours Open -->
-				<div id="status_open">
-					<h3> Hours of Operation </h3>
-					<p> Weekday: {{poolJson.weekday}} </p>
-					<p> Weekend: {{poolJson.weekend}} </p>
+				
+				<div id="pool_status">
+					<!-- When closed -->
+					<div display="inline" id="status_closed">
+						<h3> CLOSED </h3>
+						<h5> Will reopen on {{poolJson.open_date}} </h5>
+					</div>
+
+					<!-- Hours Open -->
+					<div id="status_open">
+						<h3> Hours of Operation </h3>
+						<p> Weekday: {{poolJson.weekday}} </p>
+						<p> Weekend: {{poolJson.weekend}} </p>
+					</div>
 				</div>
 
 				<!-- Get Directions Button -->
