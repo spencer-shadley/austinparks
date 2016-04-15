@@ -46,18 +46,18 @@
 				<h1> {{poolJson.pool_type}} </h1>
 
 				<!-- Pool Address -->
-				<h2> map["human_address"]["address"] </h2>
-				<h2> map["human_address"]["city"] map["human_address"]["state"] </h2>
+				<h2> {{poolJson.location_1.human_address.address}} </h2>
+				<h2> {{poolJson.location_1.human_address.city}} {{poolJson.location_1.human_address.state}} </h2>
 
 				<!-- Phone -->
-				<p> map["phone"] </p>
+				<p> {{poolJson.phone}} </p>
 				<!-- Hours Open -->
 				<!-- if status == closed -->
 				<h3> CLOSED </h3>
 				<!-- status == open -->
 				<h3> Hours of Operation </h3>
-				<p> Weekday: map["weekday"] </p>
-				<p> Weekend: map["weekend"] </p>
+				<p> Weekday: {{poolJson.weekday}} </p>
+				<p> Weekend: {{poolJson.weekend}} </p>
 				<!-- Get Directions Button -->
 
 				<!-- Feature List -->

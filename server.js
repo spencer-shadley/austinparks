@@ -90,6 +90,9 @@ var PoolApp = function() {
             else if(pools.statusCode != 200) console.err(pools.statusCode + ' in pool request');
             else {
                 poolData = JSON.parse(body);
+                poolData.forEach(function(pool) {
+                    pool.location_1.human_address = eval("(" + pool.location_1.human_address + ")"); 
+                });
             }
         });
     };
