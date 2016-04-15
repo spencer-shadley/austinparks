@@ -51,15 +51,21 @@
 
 				<!-- Phone -->
 				<p> {{poolJson.phone}} </p>
-				<!-- Hours Open -->
-				<!-- if status == closed -->
-				<h3> CLOSED </h3>
+				
+				<!-- status == closed -->
+				<div id="status_closed">
+					<h3> CLOSED </h3>
+					<h3> {{poolJson.open_date}} </h3>
+				</div>
 				<!-- status == open -->
-				<h3> Hours of Operation </h3>
-				<p> Weekday: {{poolJson.weekday}} </p>
-				<p> Weekend: {{poolJson.weekend}} </p>
-				<!-- Get Directions Button -->
+				<!-- Hours Open -->
+				<div id="status_open">
+					<h3> Hours of Operation </h3>
+					<p> Weekday: {{poolJson.weekday}} </p>
+					<p> Weekend: {{poolJson.weekend}} </p>
+				</div>
 
+				<!-- Get Directions Button -->
 				<!-- Feature List -->
 
 			</div>

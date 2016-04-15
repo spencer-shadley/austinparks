@@ -35,6 +35,9 @@ app.controller('ctrl', function($scope, $http) {
             currentPoolJson = res.data;
             $scope.poolJson = res.data;
             console.log(currentPoolJson);
+            if (poolJson.status === "Closed") {
+                
+            }
         });
     }
 
