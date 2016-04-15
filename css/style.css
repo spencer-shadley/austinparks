@@ -10,18 +10,17 @@ html,body,.container {
 }
 .picPrev {
 	height: 200px;
-	width: 300px;
 	background-color: darkcyan;
 	margin: 10px 35px;
+
 }
 .row {
 	height: 100%;
 }
 
-#list {
-	overflow: scroll;
+#info, #list {
+	overflow-y: auto;
 }
-
 ul#poolNameList {
 	list-style-type: none;
 	padding-left: 0px;
