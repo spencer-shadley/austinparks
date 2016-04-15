@@ -117,3 +117,10 @@ poolApp.app.get('/poolnames', function(req, res) {
     });
     res.send(poolNames);
 });
+
+poolApp.app.get('/pooldata/:poolname', function(req, res) {
+    poolData.forEach(function(pool) {
+        if(pool.pool_name === req.params.poolname)
+            res.json(pool);
+    });
+});
