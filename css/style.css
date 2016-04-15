@@ -1,6 +1,5 @@
 .full-height {
 	height: 100%;
-	color: yellow;
 }
 html,body,.container {
 	height:100%;
@@ -10,16 +9,24 @@ html,body,.container {
 }
 .picPrev {
 	height: 200px;
-	background-color: darkcyan;
+	background-color: lightgrey;
 	margin: 10px 35px;
 
 }
 .row {
 	height: 100%;
 }
-
+::-webkit-scrollbar {
+	display: none; 
+}
 #info, #list {
 	overflow-y: auto;
+}
+#list {
+	background-color: #474A74;
+}
+#map {
+	background-color: lightgrey;
 }
 ul#poolNameList {
 	list-style-type: none;
