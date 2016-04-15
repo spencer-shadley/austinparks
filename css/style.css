@@ -17,7 +17,9 @@ html,body,.container {
 .row {
 	height: 100%;
 }
-
+::-webkit-scrollbar {
+	display: none; 
+}
 #info, #list {
 	overflow-y: auto;
 }
