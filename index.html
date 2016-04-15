@@ -40,8 +40,10 @@
 
 				<div class="picPrev span3 col-centered hidden-sm hidden-xs"> </div>
 
+                <div id="dataHolder" ng-model="poolJson"></div>
+
 				<!-- Pool Name -->
-				<h1 ng-model="map"> {{map}} </h1>
+				<h1> {{poolJson.pool_type}} </h1>
 
 				<!-- Pool Address -->
 				<h2> map["human_address"]["address"] </h2>
