@@ -36,7 +36,9 @@
                 <ul id="poolNameList"></ul>
 			</div>
 
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 full-height" id="info">
+			<div class="col-xs-12 col-sm-12 col-md-7 col-md-push-3 col-lg-7 full-height" id="map"></div>
+
+			<div class="col-xs-12 col-sm-12 col-md-3 col-md-pull-7 col-lg-3 full-height" id="info">
 
 				<div class="picPrev span3 col-centered hidden-sm hidden-xs"> </div>
 
@@ -47,17 +49,17 @@
 				<!-- <p> Facility Type: {{poolJson.pool_type}} </p> -->
 
 				<!-- Pool Address -->
-				<h3> {{poolJson.location_1.human_address.address}} {{poolJson.location_1.human_address.city}}, {{poolJson.location_1.human_address.state}} </h3>
+				<h4> {{poolJson.location_1.human_address.address}} {{poolJson.location_1.human_address.city}}, {{poolJson.location_1.human_address.state}} </h4>
 
 				<!-- Phone -->
-				<h4> {{poolJson.phone}} </h4>
+				<h3> {{poolJson.phone}} </h3>
 				
 				
 				<div id="pool_status">
 					<!-- When closed -->
 					<div display="inline" id="status_closed">
-						<h3> CLOSED </h3>
-						<h5> Will reopen on {{poolJson.open_date}} </h5>
+						<h5> CLOSED </h5>
+						<h3> Will reopen on {{poolJson.open_date}} </h3>
 					</div>
 
 					<!-- Hours Open -->
@@ -72,8 +74,6 @@
 				<!-- Feature List -->
 
 			</div>
-
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 full-height" id="map"></div>
 
 		</div>
 	</div>

@@ -1,3 +1,6 @@
+@font-face { font-family: Delicious; src: url('Delicious-Roman.otf'); }
+
+
 .full-height {
 	height: 100%;
 }
@@ -6,11 +9,12 @@ html,body,.container {
 }
 .container {
 	width: 100%;
+	font-weight: normal;
 }
 .picPrev {
 	height: 200px;
 	background-color: lightgrey;
-	margin: 10px 35px;
+	margin: 10px 0px;
 
 }
 .row {
@@ -21,6 +25,7 @@ html,body,.container {
 }
 #info, #list {
 	overflow-y: auto;
+	padding: 5px 15px;
 }
 #list {
 	background-color: #474A74;
@@ -34,6 +39,33 @@ ul#poolNameList {
 }
 #poolNameList .btn-link {
 	color: white;
+	padding: 2px;
+}
+
+#poolNameList .btn-link:focus{
+	outline:none;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+#poolNameList .btn-link:hover{
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+
+h1{
+	font-size: 24px;
+	font-weight:500;
+}
+h3{
+	font-size:15px;
+	font-weight: normal;
+}
+h4{
+	font-weight: normal;
 }
 
 @media(max-width:767px){
