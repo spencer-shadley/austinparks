@@ -40,21 +40,17 @@ ul#poolNameList {
 #poolNameList .btn-link {
 	color: white;
 	padding: 2px;
+	max-width: inherit;
+	word-wrap: break-word;
+	word-break:break-all;
 }
 
-#poolNameList .btn-link:focus{
+#poolNameList .btn-link:focus, .btn-link:hover{
 	outline:none;
 	font-weight: bold;
 	text-decoration: none;
 	font-size: 18px;
 }
-
-#poolNameList .btn-link:hover{
-	font-weight: bold;
-	text-decoration: none;
-	font-size: 18px;
-}
-
 
 h1{
 	font-size: 24px;
