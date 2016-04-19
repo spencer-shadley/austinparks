@@ -46,18 +46,20 @@ app.controller('ctrl', function($scope, $http) {
     }
 
     // map stuff
-    console.log('starting map stuff');
     function initMap() {
-        console.log('started initMap');
-    }
-    function initialize() {
         var mapProp = {
-            center:new google.maps.LatLng(51.508742,-0.120850),
-            zoom:5,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
+            center: new google.maps.LatLng(30.3079827,-97.8934848),
+            zoom: 10,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        var map=new google.maps.Map(document.getElementById("map"),mapProp);
+        var map = new google.maps.Map(document.getElementById("map"), mapProp);
+
+        // create markers (pins)
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(30.3079827,-97.8934848)
+        });
+        marker.setMap(map);
     }
-    google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, 'load', initMap);
 });
 
