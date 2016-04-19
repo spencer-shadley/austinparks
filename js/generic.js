@@ -52,7 +52,7 @@ app.controller('ctrl', function($scope, $http) {
     function initMap() {
         var mapProp = {
             center: {lat: 30.3079827, lng: -97.8934848},
-            zoom: 10,
+            zoom: 11,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById("map"), mapProp);
@@ -67,12 +67,12 @@ app.controller('ctrl', function($scope, $http) {
         });
         marker.setMap(map);
 
-        // create info windows
         var infoWindow = new google.maps.InfoWindow({
             content: infoData
         });
         marker.addListener('click', function() {
             infoWindow.open(map, marker);
+            setPool(infoData);
         });
     }
 });
