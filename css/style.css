@@ -4,7 +4,7 @@
 	height: 100%;
 }
 html,body,.container {
-	height:100%;
+	height: 100%;
 }
 .container {
 	width: 100%;
@@ -14,7 +14,6 @@ html,body,.container {
 	height: 200px;
 	background-color: lightgrey;
 	margin: 10px 0px;
-
 }
 .row {
 	height: 100%;
@@ -34,7 +33,7 @@ html,body,.container {
 }
 ul#poolNameList {
 	list-style-type: none;
-	padding-left: 0px;
+	padding-left: 0;
 }
 #poolNameList .btn-link {
 	color: white;
@@ -42,6 +41,7 @@ ul#poolNameList {
 	max-width: inherit;
 	word-wrap: break-word;
 	word-break:break-all;
+    transition: all .15s ease;
 }
 
 #poolNameList .btn-link:focus, .btn-link:hover{
