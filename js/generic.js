@@ -21,11 +21,6 @@ app.controller('ctrl', function($scope, $http) {
         });
     });
 
-
-
-    $scope.map = "asdflsdkfjsdlkfj";
-    console.log('got here');
-
     function setPool(poolName) {
         console.log('set pool' + poolName);
         $http({
@@ -50,5 +45,19 @@ app.controller('ctrl', function($scope, $http) {
         });
     }
 
+    // map stuff
+    console.log('starting map stuff');
+    function initMap() {
+        console.log('started initMap');
+    }
+    function initialize() {
+        var mapProp = {
+            center:new google.maps.LatLng(51.508742,-0.120850),
+            zoom:5,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+        var map=new google.maps.Map(document.getElementById("map"),mapProp);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
 });
 
