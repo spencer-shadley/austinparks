@@ -48,7 +48,7 @@ app.controller('ctrl', function($scope, $http) {
     // map stuff
     function initMap() {
         var mapProp = {
-            center: new google.maps.LatLng(30.3079827,-97.8934848),
+            center: {lat: 30.3079827, lng: -97.8934848},
             zoom: 10,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -56,9 +56,18 @@ app.controller('ctrl', function($scope, $http) {
 
         // create markers (pins)
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(30.3079827,-97.8934848)
+            position: {lat: 30.3079827, lng: -97.8934848},
+            animation: google.maps.Animation.DROP
         });
         marker.setMap(map);
+
+        // create info windows
+        var infoWindow = new google.maps.InfoWindow({
+           content: 'hello world'
+        });
+        marker.addListener('click', function() {
+            infoWindow.open(map, marker);
+        });
     }
     google.maps.event.addDomListener(window, 'load', initMap);
 });
