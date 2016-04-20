@@ -76,7 +76,7 @@ app.controller('ctrl', function($scope, $http) {
         var infoWindow = new google.maps.InfoWindow({
             content: infoData
         });
-        marker.addListener('click', function() {
+        marker.addListener('click', function() { // TODO: use mouseover
             infoWindow.open(map, marker);
             setPool(infoData);
         });
