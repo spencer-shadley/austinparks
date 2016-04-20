@@ -47,8 +47,10 @@ app.controller('ctrl', function($scope, $http) {
         });
     }
 
-    // map stuff
     function initMap() {
+
+        if (navigator.geolocation) navigator.geolocation.getCurrentPosition(updtPosition);
+
         var mapProp = {
             center: {lat: 30.3079827, lng: -97.8934848},
             zoom: 11,
@@ -57,6 +59,11 @@ app.controller('ctrl', function($scope, $http) {
         map = new google.maps.Map(document.getElementById("map"), mapProp);
     }
     google.maps.event.addDomListener(window, 'load', initMap);
+
+    function updtPosition(position) {
+        var panPoint = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        map.panTo(panPoint);
+    }
 
     function createMarker(latitude, longitude, infoData) {
         // create markers (pins)
