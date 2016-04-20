@@ -21,7 +21,6 @@ app.controller('ctrl', function($scope, $http) {
     });
 
     function setPool(poolName) {
-        console.log('set pool' + poolName);
         $http({
             method: "GET",
             url: "pooldata/" + poolName
