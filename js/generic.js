@@ -74,7 +74,7 @@ app.controller('ctrl', function($scope, $http) {
         marker.setMap(map);
 
         var infoWindow = new google.maps.InfoWindow({
-            content: infoData
+            content: infoData <a href="http://maps.google.com/?q=" + latitude + "," + longitude >"View in Google Maps"</a>
         });
         marker.addListener('click', function() { // TODO: use mouseover
             infoWindow.open(map, marker);
