@@ -72,6 +72,8 @@ var PoolApp = function() {
 
         self.app.use(express.static(__dirname + '/'));
 
+        self.app.use(express.static(__dirname + '/assets'));
+
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
             //noinspection JSUnfilteredForInLoop
