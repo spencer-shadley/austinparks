@@ -7,7 +7,7 @@ html,body,.container {
 	height: 100%;
 }
 /*#info {
-	transition: all 1s linear;
+	transition: width 2s, transform 2s;
 }*/
 .container {
 	width: 100%;

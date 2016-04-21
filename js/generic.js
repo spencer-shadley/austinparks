@@ -9,7 +9,7 @@ app.controller('ctrl', function($scope, $http) {
         url : "poolcoords"
     }).then(function(res) {
         res.data.forEach(function(pool) {
-            createMarker(pool.latitude, pool.longitude, pool.name);
+            /*selectedMarker = */createMarker(pool.latitude, pool.longitude, pool.name);
             $('#poolNameList').append(
                 $('<li id="' + pool.name + '">').append(
                     $('<button class="btn btn-link">').append(
@@ -41,7 +41,8 @@ app.controller('ctrl', function($scope, $http) {
             $scope.poolJson = res.data;
 
             // create marker for pool
-            setMarker(currentPoolJson.location_1.latitude, currentPoolJson.location_1.longitude, currentPoolJson.pool_name);
+            //setMarker(currentPoolJson.location_1.latitude, currentPoolJson.location_1.longitude, currentPoolJson.pool_name);
+            //selectedMarker = createMarker(currentPoolJson.location_1.latitude, currentPoolJson.location_1.longitude, currentPoolJson.pool_name);
 
             // format opening/closing hours based on availability
             var open_div = document.getElementById("status_open");
@@ -75,43 +76,28 @@ app.controller('ctrl', function($scope, $http) {
         map.panTo(panPoint);
     }
 
-    function setMarker(latitude, longitude, infoData) {
-        var infoWindow;
-
-        if(selectedMarker) {
-            var latlng = new google.maps.LatLng(latitude, longitude);
-            selectedMarker.setPosition(latlng);
-            selectedMarker.setAnimation(google.maps.Animation.DROP);
-            infoWindow.setContent(infoData);
-        } else {
-            selectedMarker = new google.maps.Marker({
-                position: {lat: Number(latitude), lng: Number(longitude)},
-                animation: google.maps.Animation.DROP
-            });
-            infoWindow = new google.maps.InfoWindow({
-                content: infoData
-            });
-        }
+    /*function setMarker(givenMarker) {
+        selectedMarker = new google.maps.Marker({
+            position: {lat: Number(latitude), lng: Number(longitude)},
+            animation: google.maps.Animation.DROP
+        });
         marker.setMap(map);
 
         marker.addListener('click', function() {
-            infoWindow.open(map, marker);
             // setPool(infoData);
         });
-    }
+    }*/
 
     function createMarker(latitude, longitude, infoData) {
         var marker = new google.maps.Marker({
             position: {lat: Number(latitude), lng: Number(longitude)},
             animation: google.maps.Animation.DROP
         });
-        var infoWindow = new google.maps.InfoWindow({
-            content: infoData
-        });
 
         marker.setMap(map);
         marker.addListener('click', function() {
-            infoWindow.open(map, marker);
+            selectedMarker = infoData;
+            setPool(infoData);
         });
     }
 });
