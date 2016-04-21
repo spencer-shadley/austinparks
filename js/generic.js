@@ -2,10 +2,6 @@ var currentPoolJson;
 var map;
 var selectedMarker;
 
-$(function(){
-    $("#info").hide();
-});
-
 var app = angular.module('app', []);
 app.controller('ctrl', function($scope, $http) {
     $http({
@@ -21,11 +17,7 @@ app.controller('ctrl', function($scope, $http) {
                     ).click(function() {
                         setPool(pool.name);
                         if(!($('#info').is(":visible"))) {    
-                            $('#info').show();
-                            
-                            // $('#map').addClass('col-md-push-3');
-                            // $('#map').switchClass('col-md-10', 'col-md-7', 5000);
-                            // $('#map').switchClass('col-lg-10', 'col-lg-7', 5000);
+                            $('#info').removeClass('hidden');
 
                             // Messy...
                             $('#map').removeClass('col-md-10').removeClass('col-lg-10');

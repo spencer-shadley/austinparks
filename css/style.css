@@ -6,9 +6,9 @@
 html,body,.container {
 	height: 100%;
 }
-#info {
-	transition: all 15s ease;
-}
+/*#info {
+	transition: all 1s linear;
+}*/
 .container {
 	width: 100%;
 	font-weight: normal;
