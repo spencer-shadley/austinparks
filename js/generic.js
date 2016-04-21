@@ -9,21 +9,13 @@ app.controller('ctrl', function($scope, $http) {
         url : "poolcoords"
     }).then(function(res) {
         res.data.forEach(function(pool) {
-            /*selectedMarker = */createMarker(pool.latitude, pool.longitude, pool.name);
+            createMarker(pool.latitude, pool.longitude, pool.name);
             $('#poolNameList').append(
                 $('<li id="' + pool.name + '">').append(
                     $('<button class="btn btn-link">').append(
                         pool.name
                     ).click(function() {
                         setPool(pool.name);
-                        if(!($('#info').is(":visible"))) {    
-                            $('#info').removeClass('hidden');
-
-                            // Messy...
-                            $('#map').removeClass('col-md-10').removeClass('col-lg-10');
-                            $('#map').addClass('col-md-push-3').addClass('col-md-7').addClass('col-lg-7');
-                            // initMap();
-                        }
                     })
                 )
             );
@@ -36,13 +28,19 @@ app.controller('ctrl', function($scope, $http) {
             url: "pooldata/" + poolName
         }).then(function(res) {
 
+
+            if(!($('#info').is(":visible"))) {    
+                $('#info').removeClass('hidden');
+
+                // Messy...
+                $('#map').removeClass('col-md-10').removeClass('col-lg-10');
+                $('#map').addClass('col-md-push-3').addClass('col-md-7').addClass('col-lg-7');
+                // initMap();
+            }
+
             // save data for later reference
             currentPoolJson = res.data;
             $scope.poolJson = res.data;
-
-            // create marker for pool
-            //setMarker(currentPoolJson.location_1.latitude, currentPoolJson.location_1.longitude, currentPoolJson.pool_name);
-            //selectedMarker = createMarker(currentPoolJson.location_1.latitude, currentPoolJson.location_1.longitude, currentPoolJson.pool_name);
 
             // format opening/closing hours based on availability
             var open_div = document.getElementById("status_open");
@@ -76,28 +74,20 @@ app.controller('ctrl', function($scope, $http) {
         map.panTo(panPoint);
     }
 
-    /*function setMarker(givenMarker) {
-        selectedMarker = new google.maps.Marker({
-            position: {lat: Number(latitude), lng: Number(longitude)},
-            animation: google.maps.Animation.DROP
-        });
-        marker.setMap(map);
-
-        marker.addListener('click', function() {
-            // setPool(infoData);
-        });
-    }*/
-
     function createMarker(latitude, longitude, infoData) {
         var marker = new google.maps.Marker({
             position: {lat: Number(latitude), lng: Number(longitude)},
-            animation: google.maps.Animation.DROP
+            animation: google.maps.Animation.DROP,
+            icon: "./assets/icon-circle-10.png"
         });
 
         marker.setMap(map);
         marker.addListener('click', function() {
-            selectedMarker = infoData;
+            if(selectedMarker) selectedMarker.setIcon('./assets/icon-circle-10.png');
+            selectedMarker = marker;
             setPool(infoData);
+            marker.setIcon("./assets/pool-icon-50.png");
+
         });
     }
 });
