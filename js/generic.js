@@ -22,6 +22,8 @@ app.controller('ctrl', function($scope, $http) {
                         setPool(poolName);
                         if(!($('#info').is(":visible"))) {    
                             $('#info').show();
+                            
+                            // Messy...
                             $('#map').removeClass('col-md-10').removeClass('col-lg-10');
                             $('#map').addClass('col-md-push-3').addClass('col-lg-7').addClass('col-lg-7');
                             initMap();
