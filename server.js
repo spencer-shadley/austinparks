@@ -121,6 +121,17 @@ poolApp.app.get('/poolnames', function(req, res) {
     res.send(poolNames);
 });
 
+poolApp.app.get('/poolcoords', function(req, res) {
+    var poolCoords = [];
+    poolData.forEach(function(pool) {
+       poolCoords.push({
+           name: pool.pool_name,
+           latitude: pool.location_1.latitude,
+           longitude: pool.location_1.longitude})
+    });
+    res.send(poolCoords);
+});
+
 poolApp.app.get('/pooldata/:poolname', function(req, res) {
     poolData.forEach(function(pool) {
         if(pool.pool_name === req.params.poolname)
