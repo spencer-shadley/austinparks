@@ -54,6 +54,9 @@
 
 				<!-- Pool Address -->
 				<h4> {{poolJson.location_1.human_address.address}} {{poolJson.location_1.human_address.city}}, {{poolJson.location_1.human_address.state}} </h4>
+				
+				<!-- Google Maps Link (uses human_address) -->
+				<a target="_blank" href="http://maps.google.com/?q={{poolJson.location_1.human_address.address}} {{poolJson.location_1.human_address.city}} {{poolJson.location_1.human_address.state}}">View in Google Maps</a>
 
 				<!-- Phone -->
 				<h3> {{poolJson.phone}} </h3>
