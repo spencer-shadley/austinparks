@@ -1,5 +1,6 @@
 var currentPoolJson;
 var map;
+var marker;
 
 var app = angular.module('app', []);
 app.controller('ctrl', function($scope, $http) {
@@ -31,7 +32,7 @@ app.controller('ctrl', function($scope, $http) {
             $scope.poolJson = res.data;
 
             // create marker for pool
-            createMarker(currentPoolJson.location_1.latitude, currentPoolJson.location_1.longitude, currentPoolJson.pool_name);
+            setMarker(currentPoolJson.location_1.latitude, currentPoolJson.location_1.longitude, currentPoolJson.pool_name);
 
             // format opening/closing hours based on availability
             var open_div = document.getElementById("status_open");
@@ -65,12 +66,18 @@ app.controller('ctrl', function($scope, $http) {
         map.panTo(panPoint);
     }
 
-    function createMarker(latitude, longitude, infoData) {
+    function setMarker(latitude, longitude, infoData) {
         // create markers (pins)
-        var marker = new google.maps.Marker({
-            position: {lat: Number(latitude), lng: Number(longitude)},
-            animation: google.maps.Animation.DROP
-        });
+        if(marker) {
+            var latlng = new google.maps.LatLng(latitude, longitude);
+            marker.setPosition(latlng);
+            marker.setAnimation(google.maps.Animation.DROP);
+        } else {
+            marker = new google.maps.Marker({
+                position: {lat: Number(latitude), lng: Number(longitude)},
+                animation: google.maps.Animation.DROP
+            });
+        }
         marker.setMap(map);
 
         var infoWindow = new google.maps.InfoWindow({
