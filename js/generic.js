@@ -2,6 +2,8 @@ var currentPoolJson;
 var map;
 var selectedMarker;
 
+var nameToMarker = {};
+
 var app = angular.module('app', []);
 app.controller('ctrl', function($scope, $http) {
     $http({
@@ -9,7 +11,7 @@ app.controller('ctrl', function($scope, $http) {
         url : "poolcoords"
     }).then(function(res) {
         res.data.forEach(function(pool) {
-            createMarker(pool.latitude, pool.longitude, pool.name);
+            nameToMarker[pool.name] = createMarker(pool.latitude, pool.longitude, pool.name);
             $('#poolNameList').append(
                 $('<li id="' + pool.name + '">').append(
                     $('<button class="btn btn-link">').append(
@@ -28,6 +30,10 @@ app.controller('ctrl', function($scope, $http) {
             url: "pooldata/" + poolName
         }).then(function(res) {
 
+            if(selectedMarker) selectedMarker.setIcon('assets/icon-circle-10.png');
+            var marker = nameToMarker[poolName];
+            selectedMarker = marker;
+            marker.setIcon('assets/pool-icon-50.png');
 
             if(!($('#info').is(":visible"))) {    
                 $('#info').removeClass('hidden');
@@ -89,6 +95,7 @@ app.controller('ctrl', function($scope, $http) {
             marker.setIcon("assets/pool-icon-50.png");
 
         });
+        return marker;
     }
 });
 
