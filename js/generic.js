@@ -3,6 +3,10 @@ var map;
 var marker;
 var infoWindow;
 
+$(function(){
+    $("#info").hide();
+});
+
 var app = angular.module('app', []);
 app.controller('ctrl', function($scope, $http) {
     $http({
@@ -16,6 +20,12 @@ app.controller('ctrl', function($scope, $http) {
                         poolName
                     ).click(function() {
                         setPool(poolName);
+                        if(!($('#info').is(":visible"))) {    
+                            $('#info').show();
+                            $('#map').removeClass('col-md-10').removeClass('col-lg-10');
+                            $('#map').addClass('col-md-push-3').addClass('col-lg-7').addClass('col-lg-7');
+                            initMap();
+                        }
                     })
                 )
             );
