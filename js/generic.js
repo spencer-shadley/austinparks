@@ -23,10 +23,14 @@ app.controller('ctrl', function($scope, $http) {
                         if(!($('#info').is(":visible"))) {    
                             $('#info').show();
                             
+                            // $('#map').addClass('col-md-push-3');
+                            // $('#map').switchClass('col-md-10', 'col-md-7', 5000);
+                            // $('#map').switchClass('col-lg-10', 'col-lg-7', 5000);
+
                             // Messy...
                             $('#map').removeClass('col-md-10').removeClass('col-lg-10');
-                            $('#map').addClass('col-md-push-3').addClass('col-lg-7').addClass('col-lg-7');
-                            initMap();
+                            $('#map').addClass('col-md-push-3').addClass('col-md-7').addClass('col-lg-7');
+                            // initMap();
                         }
                     })
                 )
