@@ -1,6 +1,7 @@
 var currentPoolJson;
 var map;
 var marker;
+var infoWindow;
 
 var app = angular.module('app', []);
 app.controller('ctrl', function($scope, $http) {
@@ -72,20 +73,21 @@ app.controller('ctrl', function($scope, $http) {
             var latlng = new google.maps.LatLng(latitude, longitude);
             marker.setPosition(latlng);
             marker.setAnimation(google.maps.Animation.DROP);
+            infoWindow.setContent(infoData + '<br><a target="_blank" href="http://maps.google.com/?q=' + latitude + ',' + longitude + '">View in Google Maps</a>');
         } else {
             marker = new google.maps.Marker({
                 position: {lat: Number(latitude), lng: Number(longitude)},
                 animation: google.maps.Animation.DROP
             });
+            infoWindow = new google.maps.InfoWindow({
+                content: infoData + '<br><a target="_blank" href="http://maps.google.com/?q=' + latitude + ',' + longitude + '">View in Google Maps</a>'
+            });
         }
         marker.setMap(map);
 
-        var infoWindow = new google.maps.InfoWindow({
-            content: infoData + '<br><a target="_blank" href="http://maps.google.com/?q=' + latitude + ',' + longitude + '">View in Google Maps</a>'
-        });
         marker.addListener('click', function() { // TODO: use mouseover
             infoWindow.open(map, marker);
-            setPool(infoData);
+            // setPool(infoData);
         });
     }
 });
