@@ -1,7 +1,7 @@
 var currentPoolJson;
 var map;
 var selectedMarker;
-
+var getCenter;
 var nameToMarker = {};
 
 var app = angular.module('app', []);
@@ -42,6 +42,7 @@ app.controller('ctrl', function($scope, $http) {
                 // Messy...
                 $('#map').removeClass('col-md-10').removeClass('col-lg-10');
                 $('#map').addClass('col-md-push-3').addClass('col-md-7').addClass('col-lg-7');
+                map.setCenter(getCenter);
                 // initMap();
             }
 
@@ -73,6 +74,7 @@ app.controller('ctrl', function($scope, $http) {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById("map"), mapProp);
+        getCenter = map.getCenter();
     }
     google.maps.event.addDomListener(window, 'load', initMap);
 
