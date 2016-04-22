@@ -68,7 +68,7 @@ app.controller('ctrl', function($scope, $http) {
         if (navigator.geolocation) navigator.geolocation.getCurrentPosition(updtPosition);
 
         var mapProp = {
-            center: {lat: 30.3079827, lng: -97.8934848},
+            center: {lat: 30.297508, lng: -97.741448},
             zoom: 11,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
