@@ -42,7 +42,7 @@ app.controller('ctrl', function($scope, $http) {
                 // Messy...
                 $('#map').removeClass('col-md-10').removeClass('col-lg-10');
                 $('#map').addClass('col-md-push-3').addClass('col-md-7').addClass('col-lg-7');
-                updtPosition(getCenter);
+                map.setCenter(getCenter);
                 // initMap();
             }
 
