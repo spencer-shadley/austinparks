@@ -33,6 +33,7 @@ app.controller('ctrl', function($scope, $http) {
             if(selectedMarker) selectedMarker.setIcon('assets/icon-circle-15.png');
             var marker = nameToMarker[poolName];
             selectedMarker = marker;
+            marker.setAnimation(google.maps.Animation.DROP);
             marker.setIcon('assets/pool-icon-40.png');
 
             if(!($('#info').is(":visible"))) {    
