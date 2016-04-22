@@ -33,7 +33,7 @@ app.controller('ctrl', function($scope, $http) {
             if(selectedMarker) selectedMarker.setIcon('assets/icon-circle-15.png');
             var marker = nameToMarker[poolName];
             selectedMarker = marker;
-            marker.setIcon('assets/pool-icon-50.png');
+            marker.setIcon('assets/pool-icon-25.png');
 
             if(!($('#info').is(":visible"))) {    
                 $('#info').removeClass('hidden');
