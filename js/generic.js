@@ -30,7 +30,7 @@ app.controller('ctrl', function($scope, $http) {
             url: "pooldata/" + poolName
         }).then(function(res) {
 
-            if(selectedMarker) selectedMarker.setIcon('assets/icon-circle-10.png');
+            if(selectedMarker) selectedMarker.setIcon('assets/icon-circle-15.png');
             var marker = nameToMarker[poolName];
             selectedMarker = marker;
             marker.setIcon('assets/pool-icon-50.png');
@@ -84,15 +84,15 @@ app.controller('ctrl', function($scope, $http) {
         var marker = new google.maps.Marker({
             position: {lat: Number(latitude), lng: Number(longitude)},
             animation: google.maps.Animation.DROP,
-            icon: "assets/icon-circle-10.png"
+            icon: "assets/icon-circle-15.png"
         });
 
         marker.setMap(map);
         marker.addListener('click', function() {
-            if(selectedMarker) selectedMarker.setIcon('assets/icon-circle-10.png');
+            if(selectedMarker) selectedMarker.setIcon('assets/icon-circle-15.png');
             selectedMarker = marker;
             setPool(infoData);
-            marker.setIcon("assets/pool-icon-50.png");
+            marker.setIcon("assets/pool-icon-25.png");
 
         });
         return marker;
