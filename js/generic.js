@@ -11,7 +11,7 @@ app.controller('ctrl', function($scope, $http) {
         url : "poolcoords"
     }).then(function(res) {
         res.data.forEach(function(pool) {
-            nameToMarker[pool.name] = createMarker(pool.latitude, pool.longitude, pool.name);
+            nameToMarker[pool.name] = createMarker(pool.latitude, pool.longitude, pool.name, pool.status);
             $('#poolNameList').append(
                 $('<li id="' + pool.name + '">').append(
                     $('<button class="btn btn-link">').append(
@@ -84,20 +84,26 @@ app.controller('ctrl', function($scope, $http) {
         map.panTo(panPoint);
     }
 
-    function createMarker(latitude, longitude, infoData) {
+    function createMarker(latitude, longitude, infoData, status) {
+        var circleIcon = "assests/icon-circle-15"
+        var poolIcon = "assets/pool-icon-40.png"
+        if (status === 'Open') {
+            circleIcon = "assests/icon-circle-green-15"
+            poolIcon = "assets/pool-icon-green-40.png"
+        } 
+
         var marker = new google.maps.Marker({
             position: {lat: Number(latitude), lng: Number(longitude)},
             animation: google.maps.Animation.DROP,
-            icon: "assets/icon-circle-15.png"
+            icon: circleIcon
         });
 
         marker.setMap(map);
         marker.addListener('click', function() {
-            if(selectedMarker) selectedMarker.setIcon('assets/icon-circle-15.png');
+            if(selectedMarker) selectedMarker.setIcon(circleIcon);
             selectedMarker = marker;
             setPool(infoData);
-            marker.setIcon("assets/pool-icon-40.png");
-
+            marker.setIcon(poolIcon);
         });
         return marker;
     }
