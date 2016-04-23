@@ -3,7 +3,7 @@ var express = require('express');
 var fs      = require('fs');
 var request = require('request');
 
-var poolData;
+var poolData; var trailData;
 var PoolApp = function() {
 
     var self = this;
@@ -97,6 +97,9 @@ var PoolApp = function() {
                 });
             }
         });
+
+        trailData = JSON.parse(fs.readFileSync('trails.json', 'utf8'));
+        console.log(trailData);
     };
 
     /** Start the server **/

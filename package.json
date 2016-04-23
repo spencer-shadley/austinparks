@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "express": "~3.4.4",
+    "fs": "0.0.2",
     "request": "^2.71.0"
   },
   "devDependencies": {},
