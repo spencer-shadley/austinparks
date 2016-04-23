@@ -39,14 +39,14 @@ app.controller('ctrl', function($scope, $http) {
             if(!($('#info').is(":visible"))) {    
                 $('#info').removeClass('hidden');
 
-                var mq = window.matchMedia( "(max-width: 500px)" );
+                var mq = window.matchMedia( "(max-width: 991px)" );
                 if (mq.matches) {
                     $('#info').css('height', '25%');
                     $('#map').css('height', '75%');
                 }
 
                 if (matchMedia) {
-                    var mq = window.matchMedia("(min-width: 500px)");
+                    var mq = window.matchMedia("(min-width: 992px)");
                     mq.addListener(WidthChange);
                     WidthChange(mq);
                 }
