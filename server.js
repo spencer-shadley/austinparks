@@ -99,7 +99,6 @@ var PoolApp = function() {
         });
 
         trailData = JSON.parse(fs.readFileSync('trails.json', 'utf8'));
-        console.log(trailData);
     };
 
     /** Start the server **/
@@ -126,6 +125,14 @@ poolApp.app.get('/poolnames', function(req, res) {
     res.send(poolNames);
 });
 
+poolApp.app.get('/trailnames', function(req, res) {
+    var trailNames = [];
+    trailData.features.forEach(function(trail) {
+        trailNames.push(trail.properties.trail_name);
+    });
+    res.send(trailNames);
+});
+
 poolApp.app.get('/poolcoords', function(req, res) {
     var poolCoords = [];
     poolData.forEach(function(pool) {
@@ -137,11 +144,26 @@ poolApp.app.get('/poolcoords', function(req, res) {
     res.send(poolCoords);
 });
 
+poolApp.app.get('/trailcoords', function(req, res) {
+    var trailCoords = [];
+    trailData.features.forEach(function(trail) {
+       trailCoords.push({
+           name: trail.properties.trail_name,
+           latitude: trail.geometry.coordinates[0][0],
+           longitude: trail.geometry.coordinates[0][1]})
+    });
+    res.send(trailCoords);
+});
+
 poolApp.app.get('/pooldata/:poolname', function(req, res) {
     poolData.forEach(function(pool) {
         if(pool.pool_name === req.params.poolname)
             res.json(pool);
     });
+});
+
+poolApp.app.get('/traildata', function(req, res) {
+    res.send(trailData);
 });
 
 poolApp.app.get('/pools', function(req, res) {
