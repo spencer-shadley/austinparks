@@ -140,3 +140,11 @@ poolApp.app.get('/pooldata/:poolname', function(req, res) {
             res.json(pool);
     });
 });
+
+poolApp.app.get('/pools', function(req, res) {
+    res.sendfile('index.html');
+});
+
+poolApp.app.get('/trails', function(req, res) {
+    res.sendfile('original.html');
+});
