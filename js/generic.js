@@ -55,8 +55,12 @@ app.controller('ctrl', function($scope, $http) {
                 function WidthChange(mq) {
                     if (mq.matches) {
                         // window width is at least 500px
+                        $('#info').css('height', '100%');
+                        $('#map').css('height', '100%');
                     } else {
                         // window width is less than 500px
+                        $('#info').css('height', '25%');
+                        $('#map').css('height', '75%');
                     }
 
                 }
