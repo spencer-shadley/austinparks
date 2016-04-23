@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" ng-app="app" ng-controller="ctrl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Austin Trails</title>
+    <link rel="icon" type="image/png" href="https://austintexas.gov/sites/all/themes/austintexas_ninesixty/images/icons/star.png">
+
+    <!-- Latest JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- Angular -->
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+
+    <!-- Google Maps -->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDqBNGuFGXXOLFIEfUxze-Kv84Zk9RgjK0"></script>
+
+    <!-- Custom -->
+    <script src = "js/trailCalls.js"></script>
+    <link rel="stylesheet" href="css/trailStyle.css">
+
+</head>
+
+<body class="full-height">
+
+    <div class="container" ng-model="trailJson">
+        <div class="row full-height">
+
+            <div class="col-xs-hidden col-sm-hidden  col-md-2 col-lg-2 full-height" id="list">
+                <ul id="trailNameList"></ul>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 full-height" id="map"></div>
+            
+            <!-- Original Map Div element -->
+            <!-- <div class="col-xs-12 col-sm-12 col-md-7 col-md-push-3 col-lg-7 full-height" id="map"></div> -->
+
+            <div class="hidden col-xs-12 col-sm-12 col-md-3 col-md-pull-7 col-lg-3 full-height" id="info">
+
+                <div style='background: no-repeat #222 url("https://maps.googleapis.com/maps/api/streetview?size=450x200&location={{trailJson.geometry.coordinates[0][1]}},{{trailJson.geometry.coordinates[0][0]}}&heading=151.78&pitch=-0.76&key=AIzaSyDqBNGuFGXXOLFIEfUxze-Kv84Zk9RgjK0") center; background-size: cover;' class="picPrev span3 col-centered hidden-sm hidden-xs"></div>
+
+                <!-- Trail Name -->
+                <h1> {{trailJson.properties.trail_name}} </h1>
+
+                <!-- Trail Address -->
+                <h4> {{trailJson.properties.location}}</h4>
+
+
+                <p> Trail type: {{trailJson.properties.usage_type}} </p>
+
+                <p> ADA Accessible: {{trailJson.properties.ADA_Accessible}} </p>
+
+                <p> Trail Distance: {{trailJson.properties.trail_distance}} miles </p>
+                
+                <!-- Google Maps Link (uses human_address) -->
+                <a target="_blank" href="http://maps.google.com/?q={{trailJson.properties.location}} {{Austin}} {{TX}}">View in Google Maps</a>
+
+                
+                <br>
+                
+<!--                 <div id="trail_status"> -->
+                    <!-- When closed -->
+<!--                     <div display="inline" id="status_closed">
+                        <h3> CLOSED </h3>
+                        <p> Will reopen on {{trailJson.open_date}} </p>
+                    </div> -->
+
+                    <!-- Hours Open -->
+<!--                     <div id="status_open">
+                        <h3> Hours of Operation </h3>
+                        <p> Weekday: {{trailJson.weekday}} </p>
+                        <p> Weekend: {{trailJson.weekend}} </p>
+                    </div>
+                </div> -->
+
+                <!-- Get Directions Button -->
+                <!-- Feature List -->
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
