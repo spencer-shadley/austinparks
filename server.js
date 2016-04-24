@@ -171,5 +171,5 @@ poolApp.app.get('/pools', function(req, res) {
 });
 
 poolApp.app.get('/trails', function(req, res) {
-    res.sendfile('original.html');
+    res.sendfile('trailSide.html');
 });
