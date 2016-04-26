@@ -111,10 +111,10 @@ app.controller('ctrl', function($scope, $http) {
     }
 
     function createMarker(latitude, longitude, infoData, status) {
-        var circleIcon = "assests/icon-circle-15"
+        var circleIcon = "assests/icon-circle-15.png"
         var poolIcon = "assets/pool-icon-40.png"
         if (status === 'Open') {
-            circleIcon = "assests/icon-circle-green-15"
+            circleIcon = "assests/icon-circle-green-15.png"
             poolIcon = "assets/pool-icon-green-40.png"
         } 
 
