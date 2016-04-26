@@ -24,16 +24,16 @@ app.controller('ctrl', function($scope, $http) {
         });
     });
 
-    function setTrail(trailName) {
+    function setTrail(trailname) {
         $http({
             method: "GET",
-            url: "traildata/" + trailName
+            url: "traildata/" + trailname
         }).then(function(res) {
 
             if(selectedMarker) selectedMarker.setIcon('assets/icon-circle-15.png');
-            var marker = nameToMarker[trailName];
+            var marker = nameToMarker[trailname];
             selectedMarker = marker;
-            marker.setAnimation(google.maps.Animation.DROP);
+            //marker.setAnimation(google.maps.Animation.DROP);
             marker.setIcon('assets/trail-icon-50.png');
 
             if(!($('#info').is(":visible"))) {    
@@ -70,7 +70,7 @@ app.controller('ctrl', function($scope, $http) {
                 $('#map').addClass('col-md-push-3').addClass('col-md-7').addClass('col-lg-7');
                 google.maps.event.trigger(map, "resize");
                 map.setCenter(getCenter);
-                initMap();
+                //initMap();
             }
 
             // save data for later reference
@@ -141,6 +141,7 @@ app.controller('ctrl', function($scope, $http) {
         var marker = new google.maps.Marker({
             position: { lat: position.coords.latitude, lng: position.coords.longitude},
             animation: google.maps.Animation.DROP,
+            map: map
         });
     }
 
