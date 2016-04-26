@@ -35,7 +35,11 @@ app.controller('ctrl', function($scope, $http) {
             selectedMarker = marker;
             // marker.setAnimation(google.maps.Animation.DROP);
             alert(res.data.status)
-            marker.setIcon('assets/pool-icon-40.png');
+            if(res.data.status === "Open") {
+                marker.setIcon('assets/pool-icon-green-40.png');
+            } else {
+                marker.setIcon('assets/pool-icon-40.png');
+            }
 
             if(!($('#info').is(":visible"))) {    
                 $('#info').removeClass('hidden');
