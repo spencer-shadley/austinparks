@@ -139,7 +139,8 @@ poolApp.app.get('/poolcoords', function(req, res) {
        poolCoords.push({
            name: pool.pool_name,
            latitude: pool.location_1.latitude,
-           longitude: pool.location_1.longitude})
+           longitude: pool.location_1.longitude,
+           status: pool.status})
     });
     res.send(poolCoords);
 });
