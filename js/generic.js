@@ -34,6 +34,7 @@ app.controller('ctrl', function($scope, $http) {
             var marker = nameToMarker[poolName];
             selectedMarker = marker;
             // marker.setAnimation(google.maps.Animation.DROP);
+            alert(selectedMarker)
             marker.setIcon('assets/pool-icon-40.png');
 
             if(!($('#info').is(":visible"))) {    
@@ -113,7 +114,6 @@ app.controller('ctrl', function($scope, $http) {
     function createMarker(latitude, longitude, infoData, status) {
         var circleIcon = "assets/icon-circle-15.png"
         var poolIcon = "assets/pool-icon-40.png"
-        alert(status) // --> 'undefined'
         if (status === "Open") {
             circleIcon = "assets/icon-circle-green-15.png"
             poolIcon = "assets/pool-icon-green-40.png"
