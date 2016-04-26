@@ -34,7 +34,6 @@ app.controller('ctrl', function($scope, $http) {
             var marker = nameToMarker[poolName];
             selectedMarker = marker;
             // marker.setAnimation(google.maps.Animation.DROP);
-            alert(res.data.status)
             if(res.data.status === "Open") {
                 marker.setIcon('assets/pool-icon-green-40.png');
             } else {
