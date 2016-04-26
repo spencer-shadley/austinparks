@@ -10,9 +10,10 @@ html,body,.container {
 	transition: width 2s, transform 2s;
 }*/
 .container {
-	width: 140%;
+	width: 100%;
 	font-weight: normal;
 }
+
 .picPrev {
 	height: 200px;
 	background-color: lightgrey;
@@ -39,17 +40,17 @@ html,body,.container {
 ul#trailNameList {
 	list-style-type: none;
 	padding-left: 0;
+	width: 100px;
 }
 #trailNameList .btn-link {
 	color: white;
-	padding: 2px;
+	padding: 3px;
 	max-width: inherit;
 	word-wrap: break-word;
 	word-break:break-all;
     width: 100%;
     text-align: left;
     transition: all .15s ease;
-    font-size: 16px;
 }
 
 #trailNameList .btn-link:focus, .btn-link:hover{
@@ -71,6 +72,27 @@ h3 {
 h4 {
 	font-weight: normal;
 }
+
+<style>
+  html, body, #map {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  #legend {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #000;
+  }
+  #legend h3 {
+    margin-top: 0;
+  }
+  #legend img {
+    vertical-align: middle;
+  }
+</style>
 
 @media(max-width:767px){
 	#map {
