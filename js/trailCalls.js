@@ -116,7 +116,7 @@ app.controller('ctrl', function($scope, $http) {
           },
           trails: {
             name: 'Trails',
-            icon: 'assets/icon-circle-25.png'
+            icon: 'assets/legend_trail.png'
           },
         };
 
