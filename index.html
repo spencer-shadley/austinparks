@@ -38,6 +38,9 @@
 		<div class="row full-height">
 
 			<div class="col-xs-hidden col-sm-hidden  col-md-2 col-lg-2 full-height" id="list">
+                <div class="title">
+                    <img src="assets/AustinPools@2x.png"/>
+                </div>
                 <ul id="poolNameList"></ul>
 			</div>
 
@@ -48,40 +51,45 @@
 
 			<div class="hidden col-xs-12 col-sm-12 col-md-3 col-md-pull-7 col-lg-3 full-height" id="info">
 
-				<div style='background: no-repeat #222 url("https://maps.googleapis.com/maps/api/streetview?size=450x200&location={{poolJson.location_1.latitude}},{{poolJson.location_1.longitude}}&heading=151.78&pitch=-0.76&key=AIzaSyDqBNGuFGXXOLFIEfUxze-Kv84Zk9RgjK0") center; background-size: cover;' class="picPrev span3 col-centered hidden-sm hidden-xs"></div>
-
-				<!-- Pool Name -->
-				<h1> {{poolJson.pool_name}} </h1>
-
-				<!-- Pool Address -->
-				<h4> {{poolJson.location_1.human_address.address}} {{poolJson.location_1.human_address.city}}, {{poolJson.location_1.human_address.state}} </h4>
 				
-				<!-- Google Maps Link (uses human_address) -->
-				<a target="_blank" href="http://maps.google.com/?q={{poolJson.location_1.human_address.address}} {{poolJson.location_1.human_address.city}} {{poolJson.location_1.human_address.state}}">View in Google Maps</a>
+				<div class="info-top">
+					<div style='background: no-repeat #222 url("https://maps.googleapis.com/maps/api/streetview?size=450x200&location={{poolJson.location_1.latitude}},{{poolJson.location_1.longitude}}&heading=151.78&pitch=-0.76&key=AIzaSyDqBNGuFGXXOLFIEfUxze-Kv84Zk9RgjK0") center; background-size: cover;' class="picPrev span3 col-centered hidden-sm hidden-xs"></div>
 
-				<!-- Phone -->
-				<h3> {{poolJson.phone}} </h3>
-				
-				<br>
-				
-				<div id="pool_status">
-					<!-- When closed -->
-					<div display="inline" id="status_closed">
-						<h3> CLOSED </h3>
-						<p> Will reopen on {{poolJson.open_date}} </p>
-					</div>
+					<!-- Pool Name -->
+					<h1> {{poolJson.pool_name}} </h1>
 
-					<!-- Hours Open -->
-					<div id="status_open">
-						<h3> Hours of Operation </h3>
-						<p> Weekday: {{poolJson.weekday}} </p>
-						<p> Weekend: {{poolJson.weekend}} </p>
-					</div>
+					<!-- Pool Address -->
+					<h4> {{poolJson.location_1.human_address.address}} {{poolJson.location_1.human_address.city}}, {{poolJson.location_1.human_address.state}} </h4>
 				</div>
+				
 
-				<!-- Get Directions Button -->
-				<!-- Feature List -->
+				<div class="info-bottom">
+					<!-- Google Maps Link (uses human_address) -->
+					<a target="_blank" href="http://maps.google.com/?q={{poolJson.location_1.human_address.address}} {{poolJson.location_1.human_address.city}} {{poolJson.location_1.human_address.state}}">View in Google Maps</a>
 
+					<!-- Phone -->
+					<h3> {{poolJson.phone}} </h3>
+					
+					<br>
+					
+					<div id="pool_status">
+						<!-- When closed -->
+						<div display="inline" id="status_closed">
+							<h3> CLOSED </h3>
+							<p> Will reopen on {{poolJson.open_date}} </p>
+						</div>
+
+						<!-- Hours Open -->
+						<div id="status_open">
+							<h3> Hours of Operation </h3>
+							<p> Weekday: {{poolJson.weekday}} </p>
+							<p> Weekend: {{poolJson.weekend}} </p>
+						</div>
+					</div>
+
+					<!-- Get Directions Button -->
+					<!-- Feature List -->
+				</div>
 			</div>
 
 		</div>
