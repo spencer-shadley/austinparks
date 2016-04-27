@@ -136,13 +136,17 @@ poolApp.app.get('/trailnames', function(req, res) {
 poolApp.app.get('/poolcoords', function(req, res) {
     var poolCoords = [];
     poolData.forEach(function(pool) {
-       poolCoords.push({
-           name: pool.pool_name,
-           latitude: pool.location_1.latitude,
-           longitude: pool.location_1.longitude,
-           status: pool.status})
+        poolCoords.push({
+            name: pool.pool_name,
+            latitude: pool.location_1.latitude,
+            longitude: pool.location_1.longitude,
+            status: pool.status})
     });
     res.send(poolCoords);
+});
+
+poolApp.app.get('/pooldata', function(req, res) {
+    res.send(poolData);
 });
 
 poolApp.app.get('/trailcoords', function(req, res) {

@@ -1,6 +1,6 @@
 var currentPoolJson;
 var map;
-var selectedMarker;
+var selectedPool;
 var getCenter;
 var nameToMarker = {};
 
@@ -17,30 +17,34 @@ app.controller('ctrl', function($scope, $http) {
                     $('<button class="btn btn-link">').append(
                         pool.name
                     ).click(function() {
-                        setPool(pool.name);
+                        setPool(pool.name, {
+                            marker: nameToMarker[pool.name],
+                            status: pool.status
+                        });
                     })
                 )
             );
         });
     });
 
-    function setPool(poolName) {
+    function setPool(poolName, pool) {
         $http({
             method: "GET",
             url: "pooldata/" + poolName
         }).then(function(res) {
 
-            if(selectedMarker) selectedMarker.setIcon('assets/icon-circle-15.png');
-            var marker = nameToMarker[poolName];
-            selectedMarker = marker;
-            // marker.setAnimation(google.maps.Animation.DROP);
-            if(res.data.status === "Open") {
-                marker.setIcon('assets/pool-icon-green-40.png');
-            } else {
-                marker.setIcon('assets/pool-icon-40.png');
-            }
+            // update the last pool's icon
+            if(selectedPool) selectedPool.marker.setIcon((selectedPool.status === 'Open') ? 'assets/icon-circle-green-15.png' : 'assets/icon-circle-15.png');
 
-            if(!($('#info').is(":visible"))) {    
+            // update the new pool's icon
+            pool.marker.setIcon((pool.status === 'Open') ? 'assets/pool-icon-green-40.png' : 'assets/pool-icon-40.png');
+
+            selectedPool = {
+                marker: pool.marker,
+                status: pool.status
+            };
+
+            if(!($('#info').is(":visible"))) {
                 $('#info').removeClass('hidden');
 
                 var mq = window.matchMedia( "(max-width: 991px)" );
@@ -66,15 +70,12 @@ app.controller('ctrl', function($scope, $http) {
                         $('#info').css('height', '25%');
                         $('#map').css('height', '75%');
                     }
-
                 }
 
-                // Messy...
                 $('#map').removeClass('col-md-10').removeClass('col-lg-10');
                 $('#map').addClass('col-md-push-3').addClass('col-md-7').addClass('col-lg-7');
                 google.maps.event.trigger(map, "resize");
                 map.setCenter(getCenter);
-                // initMap();
             }
 
             // save data for later reference
@@ -114,28 +115,21 @@ app.controller('ctrl', function($scope, $http) {
         map.panTo(panPoint);
     }
 
-    function createMarker(latitude, longitude, infoData, status) {
-        var circleIcon = "assets/icon-circle-15.png"
-        var poolIcon = "assets/pool-icon-40.png"
-        if (status === "Open") {
-            circleIcon = "assets/icon-circle-green-15.png"
-            poolIcon = "assets/pool-icon-green-40.png"
-        } 
+    function createMarker(latitude, longitude, name, status) {
 
         var marker = new google.maps.Marker({
             position: {lat: Number(latitude), lng: Number(longitude)},
             animation: google.maps.Animation.DROP,
-            icon: circleIcon
+            icon: (status === 'Open') ? 'assets/icon-circle-green-15.png' : 'assets/icon-circle-15.png'
         });
 
-        marker.setMap(map);
         marker.addListener('click', function() {
-            if(selectedMarker) selectedMarker.setIcon(circleIcon);
-            selectedMarker = marker;
-            setPool(infoData);
-            marker.setIcon(poolIcon);
+            setPool(name, {
+                marker: marker,
+                status: status
+            });
         });
+        marker.setMap(map);
         return marker;
     }
 });
-
