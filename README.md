@@ -9,4 +9,5 @@ Project for a Non-Profit: Trails and Pools Community Project
 
 ## Links
 [Pools](http://mynode-poolsandtrails.rhcloud.com/pools)
+
 [Trails](http://mynode-poolsandtrails.rhcloud.com/trails)
