@@ -9,7 +9,7 @@ Project for a Non-Profit: Trails and Pools Community Project
 ## Report
 [Report](https://docs.google.com/document/d/1Oys8t-21BU33Gd-nJ3_y9wXqc6KRAOGDGnXX8bBpGaQ)
 
-## Check the application out here
+## Check out the application
 [Pools](http://poolsandtrails-austinparks.rhcloud.com/pools)
 
 [Trails](http://poolsandtrails-austinparks.rhcloud.com/trails)
