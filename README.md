@@ -1,4 +1,6 @@
 # Austin Parks and Recreation
+![Logo](https://github.com/spencer-shadley/austinparks/raw/master/header.jpg)
+
 Project for a Non-Profit: Trails and Pools Community Project
 
 ## Presentation
